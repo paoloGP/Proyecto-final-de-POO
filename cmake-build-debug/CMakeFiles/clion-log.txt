@@ -1,0 +1,5 @@
+/snap/clion/73/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/utec/Descargas/Proyecto-final-de-POO-master
+-- Found SFML 2.4.2 in /usr/include
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/utec/Descargas/Proyecto-final-de-POO-master/cmake-build-debug
