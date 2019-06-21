@@ -7,11 +7,6 @@ int main() {
     menu.ejecutar();
     return 0;
 }
-//int main() {
-//    Menu menu;
-//    menu.ejecutar();
-//    return 0;
-//}
 
 //int main()
 //{
