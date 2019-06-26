@@ -1,11 +1,8 @@
-//
-// Created by utec on 21/06/19.
-//
-
 #ifndef GAME_TIERRA_H
 #define GAME_TIERRA_H
 
 #include <iostream>
+#include <SFML/Graphics.hpp>
 #include <vector>
 #include "Tipos.h"
 #include "Objeto.h"
@@ -18,7 +15,7 @@ const TipoCaracter COLOR ='.';
 
 class Tierra {
 private:
-    vector<vector<char>> plano;
+    sf::RenderWindow* plano;
     vector<Objeto*> objetos;
 public:
     Tierra();
