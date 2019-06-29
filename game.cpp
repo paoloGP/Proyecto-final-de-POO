@@ -8,25 +8,25 @@ int main() {
     return 0;
 }
 
-//int main()
-//{
-//    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-//    sf::CircleShape shape(100.f);
-//    shape.setFillColor(sf::Color::Green);
+//int main(){
 //
-//    while (window.isOpen())
-//    {
+//    sf::RenderWindow window(sf::VideoMode(600, 600), "SFML works!");
+//    while (window.isOpen()){
 //        sf::Event event;
 //        while (window.pollEvent(event))
 //        {
+//            if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+//                cout << event.mouseButton.x << "  " << event.mouseButton.y << endl;
+//                sf::RectangleShape shape(sf::Vector2f(50,50));
+//                shape.setFillColor(sf::Color(24,65,3,255));
+//                shape.setPosition(event.mouseButton.x,event.mouseButton.y);
+//                window.clear();
+//                window.draw(shape);
+//            }
 //            if (event.type == sf::Event::Closed)
 //                window.close();
+//            window.display();
 //        }
-//
-//        window.clear();
-//        window.draw(shape);
-//        window.display();
 //    }
-//
 //    return 0;
 //}
