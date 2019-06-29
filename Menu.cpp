@@ -1,7 +1,3 @@
-//
-// Created by utec on 21/06/19.
-//
-
 #include "Menu.h"
 #include <iostream>
 #include <string>
@@ -35,26 +31,8 @@ void Menu::imprimirMenu() {
 
 
 void Menu::agregarObjeto() {
-    auto    nombre = input<TipoString>("Ingrese Nombre : ");
-    auto color  = input<TipoCaracter>("Ingrese color (Un caracter): ");
 
-    auto x = input<TipoEntero>("Ingrese posicion X : ");
-
-
-    while (x < 0 || x >= tierra.getAncho()) {
-        cout << "Posicion X Incorrecta, los limites son: 0, "
-             << tierra.getAncho() - 1 << "\n";
-        x = input<TipoEntero>("Ingrese posicion X : ");
-    }
-
-    TipoEntero y = input<TipoEntero>("Ingrese posicion Y : ");
-    while (y < 0 || y >= tierra.getAncho()) {
-        cout  << "Posicion Y Incorrecta, los limites son: 0, "
-              << tierra.getAltura() - 1 << "\n";
-        y = input<TipoEntero>("Ingrese posicion Y : ");
-    }
-
-    tierra.adicionarObjeto(new Objeto(nombre, color, x, y));
+    tierra.adicionarObjeto();
 }
 
 void Menu::removerObjeto() {
