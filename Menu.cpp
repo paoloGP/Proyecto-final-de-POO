@@ -9,7 +9,11 @@ enum class Opciones { Agregar=1, Remover, Mostrar};
 
 
 void limpiar() {
+#ifndef WIN32
     cout << "\033[2J\033[0;0H";
+#else
+    system("cls");
+#endif
 }
 
 void esperar() {
@@ -19,8 +23,9 @@ void esperar() {
     }while (toupper(w) != 'C');
 }
 
-void Menu::imprimirMenu() {
-    limpiar();
+Menu::Menu(TipoEntero _ancho, TipoEntero _altura): tierra(_ancho, _altura), opcion{} {}
+
+void Menu::mostrarMenu() {
     cout << "MENU\n";
     cout << string(4, '-') << "\n\n";
     cout << "1. Agregar un nuevo objeto\n";
@@ -51,17 +56,12 @@ void Menu::removerObjeto() {
 
 void Menu::dibujarMapa() {
     limpiar();
-    tierra.actualizarTierra();
     tierra.dibujarTierra();
-    cout << '\n';
-    tierra.imprimirObjetos();
-    cout << '\n';
-    esperar();
 }
 
 void Menu::ejecutar() {
     do {
-        imprimirMenu();
+        mostrarMenu();
         cin >> opcion;
         seleccionarOpcion();
     } while (opcion != 0);
@@ -82,3 +82,5 @@ void Menu::seleccionarOpcion() {
             break;
     }
 }
+
+Menu::~Menu() = default;
