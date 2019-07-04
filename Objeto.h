@@ -8,14 +8,14 @@ using namespace std;
 class Objeto {
 
 private:
-    string        nombre;
+    string  nombre;
     TipoCaracter  color;
     TipoEntero    posX;
     TipoEntero    posY;
     TipoEntero  figura;
 public:
     Objeto();
-    Objeto(const TipoString& nombre, TipoCaracter color,
+    Objeto(const TipoString& _nombre, TipoCaracter color,
            TipoEntero posX, TipoEntero posY,TipoEntero fig);
     virtual ~Objeto();
     void setNombre(const TipoString& nombre);
@@ -26,7 +26,7 @@ public:
     TipoEntero getFigura();
     void moverse(TipoEntero x, TipoEntero y);
     string mostrarPosicion();
-
 };
+
 
 #endif //GAME_OBJETO_H
