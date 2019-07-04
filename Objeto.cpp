@@ -1,8 +1,3 @@
-//
-// Created by utec on 21/06/19.
-//
-
-
 #include "Objeto.h"
 
 Objeto::Objeto(): color{}, posX{}, posY{}, figura{}  {}
@@ -14,7 +9,7 @@ Objeto::Objeto(const TipoString& nombre, TipoCaracter color,
 
 Objeto::~Objeto() {}
 
-void Objeto::setNombre(const TipoString& nombre) { this->nombre = nombre; }
+void Objeto::setNombre(const TipoString& _nombre) { this->nombre = _nombre; }
 void Objeto::moverse(TipoEntero x, TipoEntero y) {} //--  por implementar
 
 TipoString   Objeto::getNombre() { return nombre; }
@@ -26,4 +21,3 @@ TipoEntero   Objeto::getFigura() { return figura;}
 TipoString Objeto::mostrarPosicion() {
     return "X = " + to_string(posX) + " Y = " + to_string(posY);
 }
-
