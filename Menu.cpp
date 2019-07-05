@@ -5,7 +5,7 @@
 
 using namespace std;
 
-enum class Opciones { Agregar=1, Remover, Mostrar};
+enum class Opciones { Agregar=1, Remover, Mostrar, MasCercano, Tmejores, Mejores};
 
 
 void limpiar() {
@@ -25,19 +25,42 @@ void esperar() {
 
 Menu::Menu(TipoEntero _ancho, TipoEntero _altura): tierra(_ancho, _altura), opcion{} {}
 
+void Menu::masCercano(){
+    tierra.masCercano();
+}
+
+void Menu::tmejores(){
+    tierra.tmejores();
+}
+
+void Menu::mejores(){
+
+}
+
 void Menu::mostrarMenu() {
+    limpiar();
     cout << "MENU\n";
     cout << string(4, '-') << "\n\n";
     cout << "1. Agregar un nuevo objeto\n";
     cout << "2. Remover objeto\n";
-    cout << "3. Dibujar Mapa\n\n";
+    cout << "3. Dibujar Mapa\n";
+    cout << "4. Los tres lugares mas cercanos\n";
+    cout << "5. Los tres mejores de cada tipo\n";
+    cout << "6. Los tres mejores\n\n";
     cout << "0. Para Salir\n\n";
 }
 
 
 void Menu::agregarObjeto() {
-
-    tierra.adicionarObjeto();
+    auto nombre = input<TipoString>("Ingresar nombre: ");
+    cout << endl;
+    auto color = input<TipoCaracter>("Ingresar color(solo un caracter) : ");
+    cout << endl;
+    auto lugar = input<TipoCaracter>("Ingrese el tipo de lugar(M = Museo, R = Restaurante, H = Hotel): ");
+    cout << endl;
+    auto calificacion = input<TipoEntero>("Ingrese su grado de satisfaccion del 1 al 10: ");
+    cout << "Abra la ventana y haga click donde quiera posicionar el lugar: ";
+    tierra.adicionarObjeto(nombre,color,lugar,calificacion);
 }
 
 void Menu::removerObjeto() {
@@ -56,6 +79,7 @@ void Menu::removerObjeto() {
 
 void Menu::dibujarMapa() {
     limpiar();
+    tierra.imprimirObjetos();
     tierra.dibujarTierra();
 }
 
@@ -79,6 +103,12 @@ void Menu::seleccionarOpcion() {
             break;
         case  Opciones::Mostrar: // Dibujando Tierra
             dibujarMapa();
+            break;
+        case  Opciones::MasCercano: // muestra los 3 mas cercanos
+            masCercano();
+            break;
+        case  Opciones::Tmejores: // muestra los mejores
+            tmejores();
             break;
     }
 }
