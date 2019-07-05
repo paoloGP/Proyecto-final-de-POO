@@ -9,11 +9,7 @@ enum class Opciones { Agregar=1, Remover, Mostrar, MasCercano, Tmejores, Mejores
 
 
 void limpiar() {
-#ifndef WIN32
-    cout << "\033[2J\033[0;0H";
-#else
-    system("cls");
-#endif
+cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
 }
 
 void esperar() {
