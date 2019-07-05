@@ -211,19 +211,26 @@ void Tierra::imprimirObjetos() {
         cout << "Museo " << i+1 << " : " << endl;
         item->getInformacion_de_museo();
         i= i+1;
+        cout << endl;
     }
+    cout << endl;
     cout << endl;
     for (auto& item:restaurantes) {
         cout << "Restaurant " << g+1 << " : " << endl;
         item->getInformacion_del_restaurante();
         g=g+1;
+        cout << endl;
     }
+    cout << endl;
     cout << endl;
     for (auto& item: hoteles) {
         cout << "Hotel " << j+1 << " : " << endl;
         item->getInformacion_de_hotel();
         j = j+1;
+        cout << endl;
     }
+    cout << endl;
+    cout << endl;
 }
 
 void Tierra::actualizarTierra() {
