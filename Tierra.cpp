@@ -18,7 +18,7 @@ Tierra::~Tierra() {
 }
 
 void Tierra::masCercano(){
-
+    TipoString lugar1, lugar2,lugar3;
     double distancia1=1000000,distancia2=1000000,distancia3=1000000;
     TipoEntero a =0 , b = 0;
     if (!plano->isOpen())
@@ -44,85 +44,132 @@ void Tierra::masCercano(){
         cout << "No hay lugares cercanos a el punto seleccionado." << endl;
     for (auto item: museos) {
         double d, x, y;
+        TipoString lugar = item->getNombre();
         x = item->getPosX();
         y = item->getPosY();
         d = sqrt((a-x)*(a-x)+(b-y)*(b-y));
         if (d < distancia3) {
             if (d < distancia2) {
-                if (d < distancia1)
+                if (d < distancia1) {
+                    distancia3 = distancia2;
+                    distancia2 = distancia1;
                     distancia1 = d;
-                else
+                    lugar3 = lugar2;
+                    lugar2 = lugar1;
+                    lugar1 = lugar;
+                }
+                else {
+                    distancia3 = distancia2;
                     distancia2 = d;
+                    lugar3 = lugar2;
+                    lugar2 = lugar;
+                }
             }
-            else
+            else {
                 distancia3 = d;
+                lugar3 = lugar;
+            }
         }
     }
-
     for (auto item: restaurantes) {
         double d, x, y;
+        TipoString lugar = item->getNombre();
         x = item->getPosX();
         y = item->getPosY();
         d = sqrt((a-x)*(a-x)+(b-y)*(b-y));
         if (d < distancia3) {
             if (d < distancia2) {
-                if (d < distancia1)
+                if (d < distancia1) {
+                    distancia3 = distancia2;
+                    distancia2 = distancia1;
                     distancia1 = d;
-                else
+                    lugar3 = lugar2;
+                    lugar2 = lugar1;
+                    lugar1 = lugar;
+                }
+                else {
+                    distancia3 = distancia2;
                     distancia2 = d;
+                    lugar3 = lugar2;
+                    lugar2 = lugar;
+                }
             }
-            else
+            else {
                 distancia3 = d;
+                lugar3 = lugar;
+            }
         }
     }
     for (auto item: hoteles) {
-        double d, x, y;
+        double d,x, y;
+        TipoString lugar = item->getNombre();
         x = item->getPosX();
         y = item->getPosY();
         d = sqrt((a-x)*(a-x)+(b-y)*(b-y));
         if (d < distancia3) {
             if (d < distancia2) {
-                if (d < distancia1)
+                if (d < distancia1) {
+                    distancia3 = distancia2;
+                    distancia2 = distancia1;
                     distancia1 = d;
-                else
+                    lugar3 = lugar2;
+                    lugar2 = lugar1;
+                    lugar1 = lugar;
+                }
+                else {
+                    distancia3 = distancia2;
                     distancia2 = d;
+                    lugar3 = lugar2;
+                    lugar2 = lugar;
+                }
             }
-            else
+            else {
                 distancia3 = d;
+                lugar3 = lugar;
+            }
         }
     }
     cout << "Las distancias mas pequenas: \n";
-    cout << distancia1 << "  " << distancia2 << "  " << distancia3;
+    cout << "Ha "<< distancia1 << " se encuentra " << lugar1 << ".\n";
+    cout << "Ha "<< distancia2 << " se encuentra " << lugar2 << ".\n";
+    cout << "Ha "<< distancia3 << " se encuentra " << lugar3 << ".\n";
     dibujarTierra();
 }
 
 void Tierra::tmejores(){
-    Hotel hmejor;
-    Restaurante rmejor;
-    Museo mmejor;
-    TipoEntero calihotel = 0, calimuseo = 0 , calirestaurante = 0;
+    TipoEntero caliH =1000, caliM = 1000,caliR = 1000;
+    TipoString lugarH, lugarM,lugarR;
     if (museos.empty() && restaurantes.empty() && hoteles.empty())
         cout << "No hay lugares cercanos a el punto seleccionado." << endl;
     for (auto item: museos) {
         TipoEntero cali = item->getCalificacion();
-        if(cali > calimuseo)
-            mmejor << item;
+        TipoString lugar = item->getNombre();
+        if (cali < caliM) {
+            caliM = cali;
+            lugarM = lugar;
+        }
     }
-
     for (auto item: restaurantes) {
         TipoEntero cali = item->getCalificacion();
-        if(cali > calirestaurante)
-            rmejor << item;
+        TipoString lugar = item->getNombre();
+        if (cali < caliR) {
+            caliR = cali;
+            lugarR = lugar;
+        }
     }
     for (auto item: hoteles) {
         TipoEntero cali = item->getCalificacion();
-        if(cali > calihotel)
-            hmejor << item;
+        TipoString lugar = item->getNombre();
+        if (cali < caliH) {
+            caliH = cali;
+            lugarH = lugar;
+        }
     }
-    cout << "Los mejores de cada tipo de lugar: \n";
-    hmejor.getInformacion_de_hotel();
-    mmejor.getInformacion_de_museo();
-    rmejor.getInformacion_del_restaurante();
+    cout << "Los mejores lugares: \n";
+    cout << "El hotel "<< lugarH << " es el mejor calificado por los huespedes. Calificacion: " << caliH << ".\n";
+    cout << "El restaurante  "<< lugarR << " es el mejor calificado por los clientes. Calificacion: " << caliR << ".\n";
+    cout << "El museo "<< lugarM << " es el mejor calificado por los visitantes. Calificacion: " << caliM << ".\n";
+    dibujarTierra();
 }
 void mejores();
 
@@ -210,8 +257,8 @@ void Tierra::imprimirObjetos() {
     for (auto& item: museos) {
         cout << "Museo " << i+1 << " : " << endl;
         item->getInformacion_de_museo();
-        i= i+1;
         cout << endl;
+        i= i+1;
     }
     cout << endl;
     cout << endl;
@@ -229,8 +276,6 @@ void Tierra::imprimirObjetos() {
         j = j+1;
         cout << endl;
     }
-    cout << endl;
-    cout << endl;
 }
 
 void Tierra::actualizarTierra() {
