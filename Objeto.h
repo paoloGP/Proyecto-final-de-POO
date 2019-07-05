@@ -1,31 +1,28 @@
-#ifndef GAME_OBJETO_H
-#define GAME_OBJETO_H
-
 #include <iostream>
 #include "Tipos.h"
 
 using namespace std;
 class Objeto {
 
-private:
-    string  nombre;
+protected:
+    TipoString nombre;
     TipoCaracter  color;
     TipoEntero    posX;
     TipoEntero    posY;
-    TipoEntero  figura;
+    TipoEntero calificacion;
+    TipoCaracter figura;
 public:
     Objeto();
-    Objeto(const TipoString& _nombre, TipoCaracter color,
-           TipoEntero posX, TipoEntero posY,TipoEntero fig);
+    Objeto( TipoString& _nombre, TipoCaracter& color,TipoEntero posX, TipoEntero posY, TipoEntero& _calificacion,TipoCaracter& _figura);
     virtual ~Objeto();
-    void setNombre(const TipoString& nombre);
+    void setNombre (TipoString& nombre);
     string     getNombre();
     TipoEntero getPosX();
     TipoEntero getPosY();
-    char getColor();
-    TipoEntero getFigura();
-    void moverse(TipoEntero x, TipoEntero y);
-    string mostrarPosicion();
+    TipoCaracter getColor();
+    TipoEntero getCalificacion();
+    TipoCaracter getFigura();
+    void getDireccion();
 };
 
 
