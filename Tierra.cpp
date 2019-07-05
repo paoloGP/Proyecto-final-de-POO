@@ -130,21 +130,24 @@ void Tierra::masCercano(){
         }
     }
     cout << "Las distancias mas pequenas: \n";
-    cout << "Ha "<< distancia1 << " se encuentra " << lugar1 << ".\n";
-    cout << "Ha "<< distancia2 << " se encuentra " << lugar2 << ".\n";
-    cout << "Ha "<< distancia3 << " se encuentra " << lugar3 << ".\n";
+    if(distancia1<1000000)
+        cout << "Ha "<< distancia1 << " se encuentra " << lugar1 << ".\n";
+    if(distancia2<1000000)
+        cout << "Ha "<< distancia2 << " se encuentra " << lugar2 << ".\n";
+    if(distancia3<1000000)
+        cout << "Ha "<< distancia3 << " se encuentra " << lugar3 << ".\n";
     dibujarTierra();
 }
 
 void Tierra::tmejores(){
-    TipoEntero caliH =1000, caliM = 1000,caliR = 1000;
+    TipoEntero caliH =0, caliM = 0,caliR = 0;
     TipoString lugarH, lugarM,lugarR;
     if (museos.empty() && restaurantes.empty() && hoteles.empty())
         cout << "No hay lugares cercanos a el punto seleccionado." << endl;
     for (auto item: museos) {
         TipoEntero cali = item->getCalificacion();
         TipoString lugar = item->getNombre();
-        if (cali < caliM) {
+        if (cali > caliM) {
             caliM = cali;
             lugarM = lugar;
         }
@@ -152,7 +155,7 @@ void Tierra::tmejores(){
     for (auto item: restaurantes) {
         TipoEntero cali = item->getCalificacion();
         TipoString lugar = item->getNombre();
-        if (cali < caliR) {
+        if (cali > caliR) {
             caliR = cali;
             lugarR = lugar;
         }
@@ -160,18 +163,23 @@ void Tierra::tmejores(){
     for (auto item: hoteles) {
         TipoEntero cali = item->getCalificacion();
         TipoString lugar = item->getNombre();
-        if (cali < caliH) {
+        if (cali > caliH) {
             caliH = cali;
             lugarH = lugar;
         }
     }
     cout << "Los mejores lugares: \n";
-    cout << "El hotel "<< lugarH << " es el mejor calificado por los huespedes. Calificacion: " << caliH << ".\n";
-    cout << "El restaurante  "<< lugarR << " es el mejor calificado por los clientes. Calificacion: " << caliR << ".\n";
-    cout << "El museo "<< lugarM << " es el mejor calificado por los visitantes. Calificacion: " << caliM << ".\n";
+    if(caliH > 0)
+        cout << "El hotel "<< lugarH << " es el mejor calificado por los huespedes. Calificacion: " << caliH << ".\n";
+    if(caliR > 0)
+        cout << "El restaurante  "<< lugarR << " es el mejor calificado por los clientes. Calificacion: " << caliR << ".\n";
+    if(caliM > 0)
+        cout << "El museo "<< lugarM << " es el mejor calificado por los visitantes. Calificacion: " << caliM << ".\n";
     dibujarTierra();
 }
-void mejores();
+void Tierra::mejores(){
+
+}
 
 void Tierra::adicionarObjeto(TipoString& _nombre, TipoCaracter& _color, TipoCaracter& _lugar, TipoEntero& _cali) {
     TipoEntero x =0 , y = 0;
